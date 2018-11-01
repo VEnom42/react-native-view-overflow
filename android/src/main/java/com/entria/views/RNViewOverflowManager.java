@@ -3,6 +3,7 @@ package com.entria.views;
 import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.ViewGroupManager;
 import com.facebook.react.uimanager.annotations.ReactProp;
+import android.os.Build;
 
 public class RNViewOverflowManager extends ViewGroupManager<RNViewOverflowLayout> {
 
@@ -20,7 +21,8 @@ public class RNViewOverflowManager extends ViewGroupManager<RNViewOverflowLayout
 
     @ReactProp(name = "borderRadius", defaultFloat = 0f)
     public void setBorderRadius(RNViewOverflowLayout view, float borderRadius) {
-        view.setBorderRadius(borderRadius * 2);
+        if (Build.VERSION.SDK_INT != Build.VERSION_CODES.N) {
+            view.setBorderRadius(borderRadius * 2);
+        }
     }
-
 }
